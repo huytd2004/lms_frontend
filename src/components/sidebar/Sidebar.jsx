@@ -8,51 +8,8 @@ import {
   Typography,
   IconButton
 } from '@mui/material';
-
 import MenuIcon from '@mui/icons-material/Menu';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import SchoolIcon from '@mui/icons-material/School';
-import GroupIcon from '@mui/icons-material/Group';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import SettingsIcon from '@mui/icons-material/Settings';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import TableChartIcon from '@mui/icons-material/TableChart';
-import StorageIcon from '@mui/icons-material/Storage';
-import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
-
-const menuItems = [
-  {
-    group: '',
-    items: [
-      { text: 'Tổng quan', icon: <DashboardIcon /> },
-    ],
-  },
-  {
-    group: 'Quản lý khóa học',
-    items: [
-      { text: 'Học phần', icon: <SchoolIcon /> },
-      { text: 'Lớp học', icon: <GroupIcon /> },
-      { text: 'Kỳ học', icon: <CalendarTodayIcon /> },
-    ],
-  },
-  {
-    group: 'Quản lý hệ thống',
-    items: [
-      { text: 'Cấu hình', icon: <SettingsIcon /> },
-      { text: 'Báo cáo', icon: <BarChartIcon /> },
-    ],
-  },
-  {
-    group: 'Cài đặt',
-    items: [
-      { text: 'Danh mục', icon: <TableChartIcon /> },
-      { text: 'Dữ liệu eHUST', icon: <StorageIcon /> },
-      { text: 'Người dùng', icon: <GroupIcon /> },
-      { text: 'Vai trò', icon: <AssignmentIndIcon /> },
-    ],
-  },
-];
-
+import { menuItems } from '../../data/data.js'; // Import menu items từ data.js
 const Sidebar = ({ isMobile = false, open = true,onClose, onToggleSidebar }) => {
   const [activeItem, setActiveItem] = useState('Học phần');
 
@@ -84,6 +41,8 @@ const Sidebar = ({ isMobile = false, open = true,onClose, onToggleSidebar }) => 
           zIndex: isMobile ? 1300 : 'auto',
           transform: isMobile ? (open ? 'translateX(0)' : 'translateX(-100%)') : 'none',
           transition: isMobile ? 'transform 0.3s ease-in-out' : 'none',
+          overflow: 'hidden', // Quan trọng: ẩn phần tràn
+          height: 'fit-content', // Quan trọng: co lại theo nội dung
         }}
         // onClick={isMobile ? onClose : undefined} // click ngoài box thì đóng
       >
